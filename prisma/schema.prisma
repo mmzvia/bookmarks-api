@@ -19,7 +19,7 @@ model User {
   password  String
   firstName String?
   lastName  String?
-  Bookmark  Bookmark[]
+  bookmarks Bookmark[]
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
 
