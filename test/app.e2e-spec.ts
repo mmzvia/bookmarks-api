@@ -115,13 +115,6 @@ describe('App e2e test', () => {
           .expectStatus(HttpStatus.UNAUTHORIZED);
       });
 
-      it('should return unauthorized when access token not valid', () => {
-        return pactum
-          .spec()
-          .get('users/me')
-          .expectStatus(HttpStatus.UNAUTHORIZED);
-      });
-
       it('should not contain password', async () => {
         const password = await pactum
           .spec()
