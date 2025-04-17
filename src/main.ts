@@ -5,7 +5,6 @@ import {
   ClassSerializerInterceptorOptions,
   ValidationPipe,
   ValidationPipeOptions,
-  VersioningType,
 } from '@nestjs/common';
 
 async function bootstrap() {
@@ -24,10 +23,6 @@ async function bootstrap() {
   };
   const csi = new ClassSerializerInterceptor(reflector, csiOptions);
   app.useGlobalInterceptors(csi);
-
-  app.enableVersioning({
-    type: VersioningType.URI, // или HEADER, MEDIA_TYPE
-  });
 
   await app.listen(process.env.PORT ?? 3000);
 }
