@@ -1,19 +1,21 @@
-# Techincal Specification
+# Nest.js REST API
 
-## Goal
+## Description
 
-Develop a simple RESTful API server that enables users to register accounts and manage their personal bookmarks.
+A simple RESTful API server that enables users to register accounts and manage their personal bookmarks.
 
-## Roadmap
+## Scripts
 
-| Task                                                                   | Status |
-| ---------------------------------------------------------------------- | ------ |
-| Design project structure                                               | DONE   |
-| Design database schema                                                 | DONE   |
-| Initialize project (including `.env` and setup scripts)                | DONE   |
-| Implement auth endpoints                                               | DONE   |
-| Implement user endpoints                                               | DONE   |
-| Implement bookmark endpoints                                           | DONE   |
+```bash
+# Project setup.
+$ npm install
+
+# Run e2e tests.
+$ npm run test:e2e
+
+# Run the development server.
+$ npm run start
+```
 
 ## Use Cases
 
@@ -76,16 +78,3 @@ Develop a simple RESTful API server that enables users to register accounts and 
 | description  | TEXT                                        | -                             |
 | created_at   | DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL | -                             |
 | updated_at   | DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL | -                             |
-
-## Scripts
-
-```bash
-# Project setup.
-$ npm install
-
-# Run e2e tests.
-$ npm run test:e2e
-
-# Run the development server.
-$ npm run start
-```
