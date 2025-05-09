@@ -2,7 +2,7 @@
 
 ## Description
 
-A simple RESTful API server that enables users to register accounts and manage their personal bookmarks.
+A simple RESTful API that allows users to register accounts and manage their personal bookmarks.
 
 ## Scripts
 
