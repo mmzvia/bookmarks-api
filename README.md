@@ -32,7 +32,7 @@ $ npm run start
 4. Update an existing bookmark.
 5. Delete a specific bookmark.
 
-## Project Modules
+## Modules
 
 ### Authentication
 
