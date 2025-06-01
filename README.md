@@ -17,7 +17,7 @@ $ npm run test:e2e
 $ npm run start
 ```
 
-## Use Cases
+## Scenarios
 
 **Registration & Login**
 
@@ -52,29 +52,3 @@ $ npm run start
 - Get a specific bookmark by ID.
 - Update a bookmark.
 - Delete a bookmark.
-
-## Database Schema
-
-### User
-
-| Field      | Type                                        | Description             |
-| ---------- | ------------------------------------------- | ----------------------- |
-| id         | INTEGER PRIMARY KEY AUTOINCREMENT           | -                       |
-| username   | VARCHAR UNIQUE                              | -                       |
-| password   | VARCHAR                                     | Hashed password         |
-| firstName  | VARCHAR                                     | -                       |
-| lastName   | VARCHAR                                     | -                       |
-| created_at | DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL | -                       |
-| updated_at | DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL | -                       |
-
-### Bookmark
-
-| Field        | Type                                        | Description                   |
-| ------------ | ------------------------------------------- | ----------------------------- |
-| id           | INTEGER PRIMARY KEY AUTOINCREMENT           | -                             |
-| user_id      | INTEGER REFERENCES User(id) NOT NULL        | -                             |
-| title        | VARCHAR NOT NULL                            | -                             |
-| link         | TEXT NOT NULL                               | -                             |
-| description  | TEXT                                        | -                             |
-| created_at   | DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL | -                             |
-| updated_at   | DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL | -                             |
