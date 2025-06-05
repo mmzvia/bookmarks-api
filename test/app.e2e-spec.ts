@@ -1,10 +1,8 @@
 import {
   ClassSerializerInterceptor,
-  ClassSerializerInterceptorOptions,
   HttpStatus,
   INestApplication,
   ValidationPipe,
-  ValidationPipeOptions,
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { Test } from '@nestjs/testing';
@@ -13,6 +11,7 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import * as pactum from 'pactum';
 import { AuthDto } from 'src/auth/dto';
 import { CreateBookmarkDto, PatchBookmarkDto } from 'src/bookmarks/dto';
+import helmet from 'helmet';
 
 describe('App e2e test', () => {
   let app: INestApplication;
@@ -22,28 +21,24 @@ describe('App e2e test', () => {
     const testingModule = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();
-
     app = testingModule.createNestApplication();
-
-    const vpOptitons: ValidationPipeOptions = {
-      whitelist: true,
-      forbidNonWhitelisted: true,
-    };
-    const vp = new ValidationPipe(vpOptitons);
-    app.useGlobalPipes(vp);
-
+    app.use(helmet());
+    app.useGlobalPipes(
+      new ValidationPipe({
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        disableErrorMessages: true,
+      }),
+    );
     const reflector = app.get(Reflector);
-    const csiOptions: ClassSerializerInterceptorOptions = {
-      excludeExtraneousValues: true,
-    };
-    const csi = new ClassSerializerInterceptor(reflector, csiOptions);
-    app.useGlobalInterceptors(csi);
-
+    app.useGlobalInterceptors(
+      new ClassSerializerInterceptor(reflector, {
+        excludeExtraneousValues: true,
+      }),
+    );
     prismaService = app.get(PrismaService);
     await prismaService.cleanDb();
-
     pactum.request.setBaseUrl('http:/localhost:3333/');
-
     await app.init();
     await app.listen(3333);
   });
