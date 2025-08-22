@@ -6,7 +6,7 @@ A simple RESTful API that allows users to **register accounts** and **manage the
 
 ## Features
 
-### 🔐 Authentication
+### 🔐 Auth
 - User registration  
 - User login  
 
